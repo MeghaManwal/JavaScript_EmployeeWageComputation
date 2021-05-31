@@ -4,18 +4,23 @@ const parttimeHrs = 4;
 const fulltimeHrs = 8;
 const wagePerHr   = 20;
 
-let empHrs =0;
-empCheck = Math.floor(Math.random() * 10) % 3;
-switch(empCheck) {
-  case isparttime:
-        empHrs = parttimeHrs;
+function getWorkingHours(empCheck) {
+  
+  switch(empCheck) {
+    case 1:
+        return parttimeHrs;
         break;
-  case isfulltime:
-        empHrs = fulltimeHrs;
+    case 2:
+        return fulltimeHrs;
         break;
-  default:
-        empHrs = 0;
+    default:
+        return 0;
+  }
 }
+
+let empHrs =0;
+let empCheck = Math.floor(Math.random() * 10) % 3;
+empHrs = getWorkingHours(empCheck);
 
 let empWage = empHrs * wagePerHr;
 console.log("Employee Wage: "+empWage);
