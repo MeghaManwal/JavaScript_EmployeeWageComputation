@@ -30,6 +30,7 @@ let totalempHrs =0;
 let totalWorkingdays =0;
 let empHrs = 0;
 let empDailyWageArr = new Array();
+let empDailyWageMap = new Map();
 
 //To check Maximum Working Hours and Number of Working Days Conditions
 while(totalempHrs <= maxHrsinMonth && totalWorkingdays < numofWorkingDays) {
@@ -38,6 +39,7 @@ let empCheck = Math.floor(Math.random() * 10) % 3;
 empHrs = getWorkingHours(empCheck);
 totalempHrs += empHrs;
 empDailyWageArr.push(calcDailyWage(empHrs));
+empDailyWageMap.set(totalWorkingdays, calcDailyWage(empHrs));
 }
 
 let empWage = calcDailyWage(totalempHrs);
@@ -103,3 +105,9 @@ function totalDaysWorked(numofDays, dailyWage) {
 }
 
 console.log("Number of Days Employee Worked: "+empDailyWageArr.reduce(totalDaysWorked, 0));
+
+
+//UC-8 Store Daily Wage in a Map
+
+console.log(empDailyWageMap);
+console.log("Employee wage Map totalHrs: "+Array.from(empDailyWageMap.values()).reduce(totalWages, 0));
